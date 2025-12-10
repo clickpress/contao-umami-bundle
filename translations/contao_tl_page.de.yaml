@@ -2,3 +2,6 @@ tl_page:
     umami_id:
         - Umami Analytics ID
         - Tragen Sie hier Ihre Umami Analytics ID ein.
+    umami_url:
+        - Umami Analytics URL
+        - Die URL zu Ihrem Umami Analytics Server.
