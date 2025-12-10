@@ -11,6 +11,9 @@
             "Clickpress\\ContaoUmamiBundle\\": "src/"
         }
     },
+    "extra": {
+        "contao-manager-plugin": "Clickpress\\ContaoUmamiBundle\\ContaoManager\\Plugin"
+    },
     "authors": [
         {
             "name": "Stefan Schulz-Lauterbach",
