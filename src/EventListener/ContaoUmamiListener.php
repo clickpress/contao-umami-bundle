@@ -13,7 +13,7 @@ class ContaoUmamiListener
 
     public function __invoke(string $buffer, string $templateName): string
     {
-        if (strpos($templateName, 'fe_', 0) !== 0) {
+        if (!str_starts_with($templateName, 'fe_')) {
             return $buffer;
         }
 
