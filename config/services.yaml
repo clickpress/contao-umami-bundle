@@ -1,0 +1,8 @@
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+
+  Clickpress\ContaoUmamiBundle\:
+    resource: ../src
+    exclude: ../src/{ContaoManager,DependencyInjection,ContaoUmamiBundle.php}
