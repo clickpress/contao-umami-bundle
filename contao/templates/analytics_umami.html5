@@ -1,0 +1,5 @@
+<script defer src="https://analytics.sgv-domains.de/script.js" data-website-id="ddaae45c-a96a-4b00-a0e4-ebbe58ab792f"></script>
+
+<?php
+
+$this->addCspSource('script-src', 'analytics.sgv-domains.de');
