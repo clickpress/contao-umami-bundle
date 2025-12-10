@@ -10,5 +10,6 @@ $GLOBALS['TL_DCA']['tl_page']['fields']['umami_api_key'] = [
 
 PaletteManipulator::create()
     ->addField('umami_api_key', 'website_legend', PaletteManipulator::POSITION_APPEND)
+    ->applyToPalette('root', 'tl_page')
     ->applyToPalette('rootfallback', 'tl_page')
 ;
