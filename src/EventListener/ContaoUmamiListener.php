@@ -5,11 +5,16 @@ declare(strict_types=1);
 namespace Clickpress\ContaoUmamiBundle\EventListener;
 
 use Contao\CoreBundle\DependencyInjection\Attribute\AsHook;
+use Contao\CoreBundle\Routing\ResponseContext\Csp\CspHandler;
+use Contao\CoreBundle\Routing\ResponseContext\ResponseContextAccessor;
 use Contao\PageModel;
 
 #[AsHook('modifyFrontendPage')]
 class ContaoUmamiListener
 {
+    public function __construct(private readonly ResponseContextAccessor $responseContextAccessor)
+    {
+    }
 
     public function __invoke(string $buffer, string $templateName): string
     {
@@ -27,6 +32,15 @@ class ContaoUmamiListener
 
         if (!str_starts_with($objRootPage->umami_url, 'http')) {
             $objRootPage->umami_url = 'https://' . $objRootPage->umami_url;
+        }
+
+        $responseContext = $this->responseContextAccessor->getResponseContext();
+
+        if ($responseContext?->has(CspHandler::class)) {
+            /** @var CspHandler $csp */
+            $cspHandler = $responseContext->get(CspHandler::class);
+
+            $cspHandler->addSource('script-src', $objRootPage->umami_url);
         }
 
         $html = sprintf(
